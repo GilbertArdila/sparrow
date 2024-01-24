@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .li{
+        @apply flex items-center text-gray-700 xl:justify-start justify-center space-x-3;
+    }
+    .hoverEffect{
+        @apply cursor-pointer hover:bg-gray-200 rounded-full w-[52px] xl:w-auto h-[52px] xl:h-auto lg:p-3;
+    }
+}

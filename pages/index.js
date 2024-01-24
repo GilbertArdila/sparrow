@@ -1,21 +1,24 @@
-import Head from 'next/head'
-
+import Head from "next/head";
+import Sidebar from "../components/sidebar/Sidebar";
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>Sparrow app</title>
-        <meta name="description" content="this is a Twitter clone only for educational purposes" />
+        <meta
+          name="description"
+          content="this is a Twitter clone only for educational purposes"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <h1 className='text-red-500'>Hello word</h1>
-        
+      <main className="flex min-h-screen max-w-7xl mx-auto ">
+        {/**SIDEBAR */}
+        <Sidebar />
+        {/**FEED SECTION */}
+        {/**WIDGETS */}
+        {/**MODAL */}
       </main>
-
-      
     </>
-  )
+  );
 }
