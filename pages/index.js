@@ -21,7 +21,7 @@ export default function Home() {
         </div>
                 
         {/**FEED SECTION */}
-        <div className="col-span-3 sm:col-span-2 col-start-1 col-end-4 sm:col-start-2 sm:col-end-3 row-start-1 row-end-2  md:col-span-2 border-2 border-blue-500">
+        <div className="col-span-3 sm:col-span-2 col-start-1 col-end-4 sm:col-start-2 sm:col-end-3 row-start-1 row-end-2  md:col-span-2  border-r border-l border-gray-200">
            <Feed />
         </div>
        
