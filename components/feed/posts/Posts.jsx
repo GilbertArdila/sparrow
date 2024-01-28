@@ -7,7 +7,7 @@ const posts = [
         userName:"userRandom",
         userImage:"https://avatars.githubusercontent.com/u/88728941?v=4",
         image:"https://images.unsplash.com/photo-1682686581413-0a0ec9bb35bb?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
-        text:"wow!!!!!!",
+        text:"so beautiful",
         timestamp:"2 hours ago"
     },
     {

@@ -1,8 +1,11 @@
 import React from 'react'
+import Search from './Search';
 
 const Widgets = () => {
   return (
-    <div>Widgets</div>
+    <section className=' hidden md:inline ml-8 space-y-5 '>
+      <Search/>
+    </section>
   )
 }
 
