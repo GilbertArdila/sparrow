@@ -2,8 +2,8 @@ import React from 'react'
 
 const Search = () => {
     return (
-        <div className='w-full xl:w-[90%] xl:mx-auto sticky top-0 bg-white px-3'>
-            <div className='flex items-center p-3 rounded-full relative '>
+        <div className='w-full  xl:mx-auto sticky top-0 bg-white px-3'>
+            <div className='flex items-center p-3 rounded-full relative  '>
                 {/**search icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 z-50 text-gray-500">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />

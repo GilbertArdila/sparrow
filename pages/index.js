@@ -14,19 +14,20 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 min-h-screen max-w-7xl mx-auto ">
+
+      <main className="flex">
         {/**SIDEBAR */}
-        <div className="hidden sm:block sm:col-span-1  md:max-w-auto col-start-1 col-end-2 row-start-1 row-end-2 ">
+        <div className="hidden sm:block     ">
           <Sidebar  />
         </div>
                 
         {/**FEED SECTION */}
-        <div className="col-span-3 sm:col-span-2 col-start-1 col-end-4 sm:col-start-2 sm:col-end-3 row-start-1 row-end-2  md:col-span-2  border-r border-l border-gray-200">
+        <div className="sm:ml-[100px] xl:ml-[450px]  border-r border-l border-gray-200">
            <Feed />
         </div>
        
         {/**WIDGETS */}
-        <div className="hidden md:block md:col-span-1 col-start-3 col-end-4 row-start-1 row-end-2 min-w-[300px] ">
+        <div className="hidden md:block min-w-48 w-auto ">
           <Widgets/>
         </div>
         

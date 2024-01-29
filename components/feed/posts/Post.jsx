@@ -7,7 +7,7 @@ const Post = ({ post }) => {
 
       {/**user image */}
       <div className="flex  h-full w-16 justify-center pt-2">
-        <Image width={"44"} height={"44"} src={post.userImage} alt={post.userName} className="rounded-full w-11 h-11 " />
+        <img  src={post.userImage} alt={post.userName} className="rounded-full min-w-11 min-h-11 " />
       </div>
 
       {/**posts right side*/}

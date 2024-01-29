@@ -3,7 +3,7 @@ import Search from './Search';
 
 const Widgets = () => {
   return (
-    <section className=' hidden md:inline ml-8 space-y-5 '>
+    <section className=' hidden md:inline ml-8 space-y-5  '>
       <Search/>
     </section>
   )
