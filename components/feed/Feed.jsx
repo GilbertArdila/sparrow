@@ -4,11 +4,11 @@ import Posts from "./posts/Posts";
 
 const Feed = () => {
   return (
-    <div>
+    <>
       <Header/>
       <Input/>
       <Posts/>
-    </div>
+    </>
   )
 }
 

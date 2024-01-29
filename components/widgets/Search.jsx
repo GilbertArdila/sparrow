@@ -2,7 +2,7 @@ import React from 'react'
 
 const Search = () => {
     return (
-        <div className='w-full  xl:mx-auto sticky top-0 bg-white px-3'>
+        <div className='w-full max-w-[250px]   sticky top-0 bg-white px-3'>
             <div className='flex items-center p-3 rounded-full relative  '>
                 {/**search icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 z-50 text-gray-500">
