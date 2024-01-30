@@ -1,8 +1,8 @@
-import React from 'react'
+
 
 const Users = ({ user }) => {
     return (
-        <div className='flex items-center px-4 py-2 cursor-pointer hover:bg-blue-200 transition duration-200 ease-in-out' key={user.login.username}>
+        <div className='widgetDiv cursor-pointer' key={user.login.username}>
             <img src={user.picture.thumbnail} alt={user.login.username} className='rounded-full' width={40} />
             <div className='truncate ml-4 leading-5'>
                 <h4 className='font-bold hover:underline text-[14px] truncate '>{user.login.username}</h4>
