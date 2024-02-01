@@ -10,7 +10,7 @@
         @apply cursor-pointer hover:bg-gray-200 rounded-full w-[52px] xl:w-auto h-[52px] xl:h-auto lg:p-3;
     }
     .widgetsSection{
-        @apply text-gray-700 space-y-3 bg-blue-400 rounded-xl pt-2 w-full  xl:mx-auto px-3;
+        @apply text-gray-700 space-y-3 bg-blue-200 rounded-xl pt-2 w-full  xl:mx-auto px-3;
     }
     .widgetTitle{
         @apply font-bold text-xl  px-4;

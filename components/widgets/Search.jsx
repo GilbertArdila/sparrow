@@ -9,7 +9,7 @@ const Search = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
 
-                <input type="text" className='absolute inset-0 rounded-full pl-11 border-gray-500 text-gray-700 bg-blue-400 focus:bg-white focus:shadow-lg focus:ring-0 ' placeholder='search tweet' />
+                <input type="text" className='absolute inset-0 rounded-full pl-11 border-gray-500 text-gray-700 bg-blue-200 focus:bg-white focus:shadow-lg focus:ring-0 ' placeholder='search tweet' />
             </div>
         </div>
     )
