@@ -7,7 +7,7 @@ import MiniProfile from "./MiniProfile";
 
 const Sidebar = () => {
   const { data: session } = useSession();
-  console.log(session)
+  
   return (
     <>
       {/**Logo */}
