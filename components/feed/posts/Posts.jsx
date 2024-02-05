@@ -1,26 +1,19 @@
-import Post from "./Post";
+import { useEffect, useState } from "react";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
-const posts = [
-    {
-        id:"1",
-        name:"random",
-        userName:"userRandom",
-        userImage:"https://avatars.githubusercontent.com/u/88728941?v=4",
-        image:"https://images.unsplash.com/photo-1682686581413-0a0ec9bb35bb?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
-        text:"so beautiful",
-        timestamp:"2 hours ago"
-    },
-    {
-        id:"2",
-        name:"random",
-        userName:"userRandom",
-        userImage:"https://avatars.githubusercontent.com/u/88728941?v=4",
-        image:"https://images.unsplash.com/photo-1687716005788-3a31b81f70f8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8",
-        text:"wow!!!!!!",
-        timestamp:"2 days ago"
-    },
-]
+import Post from "./Post";
+import { db } from "../../../firebase";
+
 const Posts = () => {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(()=>{
+     const unsubscribe = onSnapshot(query(collection(db,"posts")), orderBy("timestamp","desc"),(snapshot)=>{setPosts(snapshot.docs)})
+    },[])
+
+   
+
+
   return (
     <div>
         {posts.map((post)=>(

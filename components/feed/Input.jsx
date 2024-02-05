@@ -85,7 +85,7 @@ const Input = () => {
                         {imageFile && (
                             <div className="relative">
                                 {/**X icon to delete chosen file */}
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="absolute w-6 h-6 text-red-600 cursor-pointer left-11 top-2 shadow-md shadow-red-600 rounded-full" onClick={() => setImageFile(null)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="absolute w-6 h-6 border-2 border-red-600  text-red-600 cursor-pointer left-11 top-2 shadow-md shadow-red-600 rounded-full" onClick={() => setImageFile(null)}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
 

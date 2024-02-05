@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Moment from 'react-moment';
 
 
 const Post = ({ post }) => {
@@ -7,7 +7,7 @@ const Post = ({ post }) => {
 
       {/**user image */}
       <div className="flex  h-full w-16 justify-center pt-2">
-        <img  src={post.userImage} alt={post.userName} className="rounded-full min-w-11 min-h-11 " />
+        <img  src={post.data().userImage} alt={post.data().userName} className="rounded-full min-w-11 min-h-11 " />
       </div>
 
       {/**posts right side*/}
@@ -18,9 +18,10 @@ const Post = ({ post }) => {
 
           {/**name and userName */}
           <div className="flex space-x-1 items-center whitespace-nowrap">
-            <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">{post.name}</h4>
-            <span className="text-sm sm:text-[15px]">@{post.userName}-</span>
-            <span className="text-sm sm:text-[15px] hover:underline">{post.timestamp}</span>
+            <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">{post.data().name}</h4>
+            <span className="text-sm sm:text-[15px]">@{post.data().userName}-</span>
+            <span className="text-sm sm:text-[15px] hover:underline">
+            <Moment fromNow>{post?.timestamp?.toDate()}</Moment></span>
           </div>
 
           {/**dots icon */}
@@ -33,12 +34,12 @@ const Post = ({ post }) => {
 
         {/**postText */}
 
-        <span className="text-[15px] sm:text-[16px] text-gray-800">{post.text}</span>
+        <span className="text-[15px] sm:text-[16px] text-gray-800">{post.data().text}</span>
 
 
         {/**post image */}
 
-        <img src={post.image} alt={post.text} className="rounded-2xl mr-2" />
+        <img src={post.data().image} alt={post.data().text} className="rounded-2xl mr-2 w-64" />
 
 
         {/**tweet buttons */}
