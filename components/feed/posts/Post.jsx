@@ -41,7 +41,10 @@ const Post = ({ post }) => {
   async function deletePost() {
     if(window.confirm("Are you sure you want to delete this post?")){
       await deleteDoc(doc(db, "posts", post.id));
-    await deleteObject(ref(storage, `posts/${post.id}/image`));
+      if(post.data().image){
+        await deleteObject(ref(storage, `posts/${post.id}/image`));
+      }
+    
     }
   }
 
@@ -81,8 +84,10 @@ const Post = ({ post }) => {
 
 
         {/**post image */}
-
-        <img src={post.data().image} alt={post.data().text} className="rounded-2xl mr-2 object-content  w-full" />
+            {post.data().image && (
+              <img src={post.data().image} alt={post.data().text} className="rounded-2xl mr-2 object-content  w-full" />
+            )}
+        
 
 
         {/**tweet buttons */}
