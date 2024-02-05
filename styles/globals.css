@@ -7,7 +7,7 @@
         @apply flex items-center text-gray-700 xl:justify-start justify-center space-x-3;
     }
     .hoverEffect{
-        @apply cursor-pointer hover:bg-gray-200 rounded-full w-[52px] xl:w-auto h-[52px] xl:h-auto lg:p-3;
+        @apply cursor-pointer hover:bg-gray-200 rounded-full w-[52px] xl:w-auto h-[52px] xl:h-auto lg:p-3 transition duration-500;
     }
     .widgetsSection{
         @apply text-gray-700 space-y-3 bg-blue-200 rounded-xl pt-2 w-full  xl:mx-auto px-3;
@@ -19,6 +19,6 @@
         @apply text-blue-300 pl-4 pb-3 hover:text-blue-600;
     }
     .widgetDiv{
-        @apply flex items-center px-4 py-2  hover:bg-gray-300 transition duration-200 ease-in-out
+        @apply flex items-center px-4 py-2  hover:bg-gray-300 transition duration-500 ease-in-out
     }
 }
