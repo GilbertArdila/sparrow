@@ -2,8 +2,14 @@ import Head from "next/head";
 import Sidebar from "../components/sidebar/Sidebar";
 import Feed from "../components/feed/Feed.jsx";
 import Widgets from "../components/widgets/Widgets.jsx";
+import Modal from "../components/modal/CommentsModal.jsx";
+
+import { useRecoilState } from "recoil";
+import { modal } from "../globalStates/atom.js";
+
 
 export default function Home({news,randomUsers}) {
+  const [isOpen, setIsOpen]= useRecoilState(modal);
   return (
     <>
       <Head>
@@ -32,6 +38,8 @@ export default function Home({news,randomUsers}) {
         </section>
         
         {/**MODAL */}
+        {isOpen && <Modal/>}
+        
       </main>
     </>
   );

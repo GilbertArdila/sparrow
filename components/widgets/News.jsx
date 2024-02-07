@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable @next/next/no-img-element */
+
 
 const News = ({article}) => {
   return (
