@@ -98,13 +98,12 @@ const Post = ({ post,id }) => {
         </div>
 
         {/**postText */}
-
-        <span className="text-[15px] sm:text-[16px] text-gray-800">{post?.data()?.text}</span>
+        <span className="text-[15px] sm:text-[16px] text-gray-800 italic font-semibold">{post?.data()?.text}</span>
 
 
         {/**post image */}
         {post.data()?.image && (
-          <img src={post?.data()?.image} alt={post?.data()?.text} className="rounded-2xl mr-2 object-content  w-full" />
+          <img src={post?.data()?.image} alt={post?.data()?.text} className="rounded-2xl mr-2 mt-3 object-content  w-full" />
         )}
 
 

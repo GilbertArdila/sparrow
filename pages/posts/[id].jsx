@@ -10,7 +10,8 @@ import Header from "../../components/feed/Header";
 import Post from "../../components/feed/posts/Post";
 import CommentsModal from "../../components/modal/CommentsModal";
 import { db } from "../../firebase";
-import { doc, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot, orderBy, query } from "firebase/firestore";
+import Comments from "../../components/post/Comments";
 
 
 const PostPage = ({ news, randomUsers }) => {
@@ -20,10 +21,12 @@ const PostPage = ({ news, randomUsers }) => {
   const [isOpen, setIsOpen]= useRecoilState(modal);
 
   const [post, setPost] = useState(null);
+  const [comments, setComments] = useState([]);
 
   //get the current post
   useEffect(() => {
-    onSnapshot(doc(db, "posts", id), ((snapshot) => setPost(snapshot)))
+    onSnapshot(doc(db, "posts", id), ((snapshot) => setPost(snapshot)));
+    onSnapshot(query(collection(db, "posts", id, "comments"), orderBy("timestamp", "desc")), ((snapshot) => setComments(snapshot.docs)));
   }, [db, id])
 
 
@@ -47,7 +50,14 @@ const PostPage = ({ news, randomUsers }) => {
         {/**POST SECTION */}
         <section className="sm:ml-[100px] xl:ml-[450px]  border-r border-l border-gray-200">
           <Header title={"Sparrow"} isHome={false} />
-          {post !== null &&  <Post post={post} id={id}/>}
+          {post !== null && (
+            <>
+            <Post post={post} id={id}/>
+            {comments.length >0 && comments.map((comment)=>(
+              <Comments key={comment.id} comment={comment.data()} id={comment.id}/>
+            ))}
+            </>
+          ) }
          
         </section>
 
