@@ -2,7 +2,7 @@ import Head from "next/head";
 import Sidebar from "../components/sidebar/Sidebar";
 import Feed from "../components/feed/Feed.jsx";
 import Widgets from "../components/widgets/Widgets.jsx";
-import Modal from "../components/modal/CommentsModal.jsx";
+import CommentsModal from "../components/modal/CommentsModal.jsx";
 
 import { useRecoilState } from "recoil";
 import { modal } from "../globalStates/atom.js";
@@ -15,7 +15,7 @@ export default function Home({news,randomUsers}) {
       <Head>
         <title>Sparrow app</title>
         <meta
-          name="description"
+          name="main page"
           content="this is a Twitter clone only for educational purposes"
         />
         <link rel="icon" href="/favicon.ico" />
@@ -38,7 +38,7 @@ export default function Home({news,randomUsers}) {
         </section>
         
         {/**MODAL */}
-        {isOpen && <Modal/>}
+        {isOpen && <CommentsModal/>}
         
       </main>
     </>

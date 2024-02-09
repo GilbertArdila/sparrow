@@ -46,7 +46,7 @@ const CommentsModal = () => {
 
     setOpenModal(false);
     setInputData("");
-    //router.push(`posts/${actualPostId}`)
+    router.push(`/posts/${actualPostId}`)
     }
     
 

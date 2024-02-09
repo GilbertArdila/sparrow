@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Moment from 'react-moment';
-
+import { useRouter } from 'next/router';
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db, storage } from "../../../firebase"
 import { signIn, useSession } from "next-auth/react";
@@ -10,9 +10,10 @@ import { modal, postUser, postId } from '../../../globalStates/atom';
 import { useRecoilState } from 'recoil';
 
 
-const Post = ({ post }) => {
+const Post = ({ post,id }) => {
   const { data: session } = useSession();
   const [likes, setLikes] = useState([]);
+  const router = useRouter();
   const [comments, setComments] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
 
@@ -31,7 +32,7 @@ const Post = ({ post }) => {
 
   //get the posts´comments
   useEffect(() => {
-    onSnapshot(collection(db, "posts", post.id, "comments"), (snapshot) => setComments(snapshot.docs))
+    onSnapshot(collection(db, "posts", id, "comments"), (snapshot) => setComments(snapshot.docs))
   }, [])
 
   //check if user has liked the post
@@ -44,9 +45,9 @@ const Post = ({ post }) => {
   async function likePost() {
     if (session) {
       if (hasLiked) {
-        await deleteDoc(doc(db, "posts", post.id, "likes", session?.user.uid))
+        await deleteDoc(doc(db, "posts", id, "likes", session?.user.uid))
       } else {
-        await setDoc(doc(db, "posts", post.id, "likes", session?.user.uid), {
+        await setDoc(doc(db, "posts", id, "likes", session?.user.uid), {
           username: session?.user.username
         })
       }
@@ -58,11 +59,11 @@ const Post = ({ post }) => {
   //delete post function
   async function deletePost() {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      await deleteDoc(doc(db, "posts", post.id));
-      if (post.data().image) {
-        await deleteObject(ref(storage, `posts/${post.id}/image`));
+      await deleteDoc(doc(db, "posts", id));
+      if (post?.data()?.image) {
+        await deleteObject(ref(storage, `posts/${id}/image`));
       }
-
+        router.push("/");
     }
   }
 
@@ -71,7 +72,7 @@ const Post = ({ post }) => {
 
       {/**user image */}
       <div className="flex  h-full w-16 justify-center pt-2">
-        <img src={post.data().userImage} alt={post.data().userName} className="rounded-full min-w-11 min-h-11 " />
+        <img src={post?.data()?.userImage} alt={post?.data()?.userName} className="rounded-full min-w-11 min-h-11 " />
       </div>
 
       {/**posts right side*/}
@@ -82,10 +83,10 @@ const Post = ({ post }) => {
 
           {/**name and userName */}
           <div className="flex space-x-1 items-center whitespace-nowrap">
-            <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">{post.data().name}</h4>
-            <span className="text-sm sm:text-[15px]">@{post.data().userName}-</span>
+            <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">{post?.data()?.name}</h4>
+            <span className="text-sm sm:text-[15px]">@{post?.data()?.userName}-</span>
             <span className="text-sm sm:text-[15px] hover:underline">
-              <Moment fromNow>{post?.data().timestamp?.toDate()}</Moment></span>
+              <Moment fromNow>{post?.data()?.timestamp?.toDate()}</Moment></span>
           </div>
 
           {/**dots icon */}
@@ -98,12 +99,12 @@ const Post = ({ post }) => {
 
         {/**postText */}
 
-        <span className="text-[15px] sm:text-[16px] text-gray-800">{post.data().text}</span>
+        <span className="text-[15px] sm:text-[16px] text-gray-800">{post?.data()?.text}</span>
 
 
         {/**post image */}
-        {post.data().image && (
-          <img src={post.data().image} alt={post.data().text} className="rounded-2xl mr-2 object-content  w-full" />
+        {post.data()?.image && (
+          <img src={post?.data()?.image} alt={post?.data()?.text} className="rounded-2xl mr-2 object-content  w-full" />
         )}
 
 
@@ -113,8 +114,7 @@ const Post = ({ post }) => {
 
 
           <>
-            {session?.user.uid !== post.data().id ? (
-              <>
+            
                 {/**chat icon */}
                 <div className='flex  items-center justify-center space-x-1'>
                   <svg
@@ -130,7 +130,7 @@ const Post = ({ post }) => {
                       } else {
                         setOpen(!open);
                         setUserData(post.data());
-                        setActualPostId(post.id);
+                        setActualPostId(id);
                       }
 
                     }}
@@ -139,10 +139,7 @@ const Post = ({ post }) => {
                   </svg>
                   {comments.length > 0 && <span>{comments.length}</span>}
                 </div>
-              </>
-            ): <>
-            {comments.length > 0 && <span >N° comments: {comments.length}</span>}
-            </>}
+              
 
           </>
 
@@ -150,7 +147,7 @@ const Post = ({ post }) => {
 
 
           {/**trash icon only if user is the post´s owner */}
-          {session?.user.uid === post.data().id && (
+          {session?.user.uid === post?.data()?.id && (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
               className="w-9 h-9 hoverEffect hover:bg-red-100 hover:text-red-600 p-2"
               onClick={deletePost}
