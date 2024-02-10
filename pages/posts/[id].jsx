@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRecoilState } from "recoil";
 import { modal } from "../../globalStates/atom";
+import { AnimatePresence,motion } from 'framer-motion';
 
 import Sidebar from "../../components/sidebar/Sidebar";
 import Widgets from "../../components/widgets/Widgets";
@@ -53,9 +54,13 @@ const PostPage = ({ news, randomUsers }) => {
           {post !== null && (
             <>
             <Post post={post} id={id}/>
+            <AnimatePresence>
             {comments.length >0 && comments.map((comment)=>(
+               <motion.div key={comment.id} initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} transition={{duration:1}}>
               <Comments key={comment.id} comment={comment.data()} id={comment.id}/>
+              </motion.div>
             ))}
+             </AnimatePresence>
             </>
           ) }
          
